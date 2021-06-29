@@ -1,0 +1,41 @@
+<html>
+    <title>Новости</title>
+    <head>
+        <meta charset = "UTF-8">
+    </head>
+    <body align='center'>
+        <h1 style='background-color: darksalmon;'>НОВОСТИ</h1>
+        <section style='background-color: floralwhite;' id="news_body"></section>
+        <input style="
+            background-color: #008CBA;
+            border: none;
+            color: white;
+            padding: 15px 32px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 16px;"
+            type="button" value="Ещё новости" onclick="upload();">
+    </body>
+
+    <script language="JavaScript" src="../../jquery.js"></script>
+    <script language="JavaScript">
+        var loaded = 0;
+        var need_to_load = 5;
+
+        $(document).ready(upload());
+
+        function upload() {
+            $.ajax({
+                type: "GET",
+                url: "get_news.php?loaded=" + loaded + "&need_to_load=" + need_to_load,
+                dataType: "html",
+                success: function(data){
+                    document.getElementById("news_body").innerHTML += data;
+                    loaded += need_to_load;
+                    need_to_load = 2;
+                }
+            });
+        }
+    </script>
+</html>
