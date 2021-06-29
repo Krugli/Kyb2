@@ -1,0 +1,52 @@
+<html>
+    <body align='center'>
+        <meta charset = "UTF-8">
+        <h1>Нажимайте на стрелочки на клавиатуре, чтобы двигать картинку</h1>
+        <img id="cat_engine_logo" src="https://lh3.googleusercontent.com/proxy/BgofrAbgBiLnuNNpLcCXL4xFfMGtveT94DvuRO-Ira0v866GUzviF3cudcX5oZNt5ZOpnAITEffFB9-Yb47AtA" style="position: absolute;">
+    </body>
+    <script language="JavaScript" src="../../jquery.js"></script>
+    <script language="JavaScript">
+        var current_position_x=0, current_position_y=0;
+
+        document.onkeydown = function(e){
+            var window_width = window.innerWidth, window_height = window.innerHeight;
+
+            switch(e.which) {
+                case 37: // left
+                    current_position_x-=100;
+                    if (current_position_x<0){
+                        current_position_x=0;
+                    }
+                break;
+
+                case 38: // up
+                    current_position_y-=100;
+                    if (current_position_y<0){
+                        current_position_y=0;
+                    }
+                break;
+
+                case 39: // right
+                    current_position_x+=100;
+                    if (current_position_x>window_width-400){
+                        current_position_x=window_width-400;
+                    }
+                break;
+
+                case 40: // down
+                    current_position_y+=100;
+                    if (current_position_y>window_height-400){
+                        current_position_y=window_height-400;
+                    }
+                break;
+
+                default: return; // exit this handler for other keys
+            }
+            $("#cat_engine_logo").animate({
+                left: String(current_position_x)+"px",
+                top: String(current_position_y)+"px",
+            });
+            e.preventDefault();
+        }
+    </script>
+</html>

@@ -1,0 +1,21 @@
+<html>
+    <body>
+        <meta charset = "UTF-8">
+        <script language="JavaScript" type="text/JavaScript">
+
+            document.writeln("<table id='table' border='1'>");
+
+            document.writeln("<tr><td>Степень</td><td>Результат</td></tr>");
+
+            var power=1;
+            var result=1;
+            for (var i=0; i<10; i++){
+                document.writeln(`<tr><td>${power}</td><td>${result}</td></tr>`);
+                power++;
+                result*=2;
+            }
+
+            document.writeln("</table>");
+        </script>
+    </body>
+</html>

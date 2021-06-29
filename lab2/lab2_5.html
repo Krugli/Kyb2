@@ -1,0 +1,43 @@
+<html>
+    <body>
+        <meta charset = "UTF-8">
+        <img id="cat_engine_logo" class="drag" src="https://lh3.googleusercontent.com/proxy/BgofrAbgBiLnuNNpLcCXL4xFfMGtveT94DvuRO-Ira0v866GUzviF3cudcX5oZNt5ZOpnAITEffFB9-Yb47AtA"
+            style="position: absolute;">
+    </body>
+
+    <script language="JavaScript" src="../../jquery.js"></script>
+
+        <script language="JavaScript">
+            var cat = document.getElementById('cat_engine_logo');
+
+            cat.ondragstart = function() {
+                return false;
+            };
+
+            cat.onmousedown = function(e){
+                var coords = getCoords(cat);
+                var shiftX = e.pageX - coords.left;
+                var shiftY = e.pageY - coords.top;
+
+
+                document.onmousemove = function(e) {
+                    cat.style.left = e.pageX - shiftX + 'px';
+                    cat.style.top = e.pageY - shiftY + 'px';
+                }
+
+                cat.onmouseup = function() {
+                    document.onmousemove = null;
+                    cat.onmouseup = null;
+                }
+            }
+
+            function getCoords(elem) {
+                var box = elem.getBoundingClientRect();
+                return {
+                    top: box.top + pageYOffset,
+                    left: box.left + pageXOffset
+                };
+            }
+
+        </script>
+</html>
