@@ -1,0 +1,294 @@
+<html>
+    <title>Заказ набора</title>
+    <head>
+        <meta charset = "UTF-8">
+
+        <link rel="stylesheet" type="text/css" href="datetimepicker/jquery.datetimepicker.css">
+        <link rel="stylesheet" href="../jquery-ui/jquery-ui.min.css">
+        <script src="../jquery-ui/external/jquery/jquery.js"></script>
+        <script src="../jquery-ui/jquery-ui.min.js"></script>
+        <script src="datetimepicker/build/jquery.datetimepicker.full.min.js"></script>
+
+        <style>
+            section{
+                padding-top: 15px;
+                padding-bottom: 15px;
+                width:400px;
+                height:220px;
+                background-color: gold;
+                font-size: 20px;
+                border-radius: 2px;
+                border-color: grey;
+                border-style: solid;
+            }
+
+            .ui-slider {
+                margin-left: 15px;
+                margin-right: 15px;
+            }
+
+            input[type=text]{
+                background-color: lightgreen;
+                color: black;
+                border: solid;
+                border-color: lightgrey;
+                padding: 15px 32px;
+                font-size: 16px;
+            }
+
+            .input-label{
+                font-size:24px;
+                font-style: oblique;
+                font-weight: bold;
+            }
+
+            img{
+                width:200px;
+                height:200px;
+            }
+        </style>
+    </head>
+    <body align='center' style="background-color:honeydew;">
+       <h1 style='font-weight: bold; font-style: italic;'>Заказать доставку</h1>
+       <h2 class='input-label'>Выберите набор</h2>
+
+        <div style='background-color:lightgreen;padding-top:10px;padding-bottom:10px;'>
+            <section style='overflow:hidden;width:100%;border-style:none;padding-top:10px;padding-bottom:0px;height:270px;background-color:lightgreen;'>
+                <table id='list_inner' style='position: relative;'>
+                    <tr>
+                        <td>
+                            <section id='list_item_0' align='center' onclick='chooseListItem(0);'>
+                                <div>
+                                    <img src="https://s82079.cdn.ngenix.net/330x0/in1psxyquFtqpaiya3U5MH48.png" title="Донат Карамельный/ Донат Клубничный Новый +  Капучино 0,3 л">
+                                </div>
+                                <a>3987</a>
+                            </section>
+                        </td>
+
+                        <td>
+                            <section id='list_item_1' align='center' onclick='chooseListItem(1);'>
+                                <div class="img">
+                                    <img src="https://s82079.cdn.ngenix.net/230x230/3sl31ytn38gba41u3zc4yytw7bz5" title="Баскет M  + Пепси 1 л">
+                                </div>
+                                <a>3820</a>
+                            </section>
+                        </td>
+
+                        <td>
+                            <section id='list_item_2' align='center' onclick='chooseListItem(2);'>
+                                <div class="img">
+                                    <img src="https://s82079.cdn.ngenix.net/230x230/5672kbsxnu1jd93qkjaidr87vniv" title="Боксмастер на выбор + картофель фри стандартный + газированный напиток 0,4 на выбор">
+                                </div>
+                                <a>3989</a>
+                            </section>
+                        </td>
+
+                        <td>
+                            <section id='list_item_3' align='center' onclick='chooseListItem(3);'>
+                                <div class="img">
+                                    <img src="https://s82079.cdn.ngenix.net/230x230/rqkzy3lo0epgxrw9p1wnjgfa7dug" title="Адреналин Раш Гейм + Пати бокс">
+                                </div>
+                                <a>4305</a>
+                            </section>
+                        </td>
+                        <td>
+                            <section id='list_item_4' align='center' onclick='chooseListItem(4);'>
+                                <div class="img">
+                                    <img src="https://s82079.cdn.ngenix.net/230x230/ogaonri2dhpedgacql26fzu7p5wy" title="Твистер ор./остр. + Адреналин Раш гейм 0,449л кошка">
+                                </div>
+                                <a>4303</a>
+                            </section>
+                        </td>
+
+                        <td>
+                            <section id='list_item_5' align='center' onclick='chooseListItem(5);'>
+                                <div class="img">
+                                    <img src="https://s82079.cdn.ngenix.net/230x230/1fvx7YSyyx92rPuM11zXjhSf.png" title="3 Стрипса ор./ост. + Соус сырный">
+                                </div>
+                                <a>3072</a>
+                            </section>
+                        </td>
+
+                        <td>
+                            <section id='list_item_6' align='center' onclick='chooseListItem(6);'>
+                                <div class="img">
+                                    <img src="https://s82079.cdn.ngenix.net/230x230/YKivcbXXp5gC5232w59SiToC.png" title="Твистер оригинальный/острый + Капучино 0,3 л">
+                                </div>
+                                <a>3819</a>
+                            </section>
+                        </td>
+
+                        <td>
+                            <section id='list_item_7' align='center' onclick='chooseListItem(7);'>
+                                <div class="img">
+                                    <img src="https://s82079.cdn.ngenix.net/230x230/4K14AzFUzCa6WTaVm2k5oHUF.png" title="Баскет Фри и 2 соуса на выбор">
+                                </div>
+                                <a>3841</a>
+                            </section>
+                        </td>
+                    </tr>
+                </table>
+            </section>
+            <p type="text" id="slider" readonly="readonly"></p>
+        </div>
+
+        <form id='fillform'>
+            <p><div class='input-label'>Ваше имя</div><input id="name" title="Имя" type="text"></p>
+
+            <p>
+                <div class='input-label'>Время, к которому нужен заказ</div>
+                <input id="set_time" title="Время заказа" type="text" readonly="readonly">
+            </p>
+
+            <p>
+                <div class='input-label'>Приборы</div>
+                <select id="tools">
+                    <option value = "0">Нет</option>
+                    <option value = "1" selected="selected">На одного</option>
+                    <option value = "2">На двух</option>
+                    <option value = "3">На четырёх</option>
+                </select>
+            </p>
+            <p>
+                <div id="delivery">
+                    <h3 id="delivery_1">Самовывоз</h3>
+                    <div>
+                        <p>Заказ готовится в ближайщем от вас ресторане.</p>
+                        <p>За 10 минут до готовности приходёт уведомление.</p>
+                    </div>
+                    <h3 id="delivery_2">Доставка</h3>
+                    <div>
+                        <p>После приготовления заказа, он будет доставлен сразу к вам.</p>
+                        <p>За 20-30 минут до доставки придёт уведомление.</p>
+                    </div>
+                </div>
+            </p>
+
+            <p>
+                <div class='input-label'>К оплате</div>
+                <input id="price" type="text" title="К оплате" value="0" readonly="readonly">
+            </p>
+
+            <p><input style='
+                background-color: #008CBA;
+                border: none;
+                color: white;
+                padding: 15px 32px;
+                text-align: center;
+                text-decoration: none;
+                display: inline-block;
+                font-size: 16px;'
+                class="ui-button ui-widget ui-corner-all" type="button" value="Подать" onclick="send();"></p>
+        </form>
+
+        <div id="ok_dialog" title="Уведомление!">
+            <p>Заявка подана.</p>
+        </div>
+        <div id="error_dialog" title="Уведомление!">
+            <p>Заполните все поля.</p>
+        </div>
+    </body>
+
+    <script>
+        $("#slider").slider({
+            step: 50,
+            min: 0,
+            max: 8*400-400,
+            slide: function(event, ui) {
+                document.getElementById("list_inner").style.left = -ui.value + 'px';
+            },
+        });
+
+        // Инициализация объектов
+        $("#set_time").datetimepicker({
+            format: "H:i - d.m.y",
+            validateOnBlur: false
+        });
+        $.datetimepicker.setLocale('ru');
+
+        $("#tools").selectmenu();
+
+        var delivery_chosen = 1;
+        $("#delivery").accordion({
+            activate: function(event, ui) {
+                var currentHeaderID = ui.newHeader.attr("id");
+                if (currentHeaderID === "delivery_1"){
+                    delivery_chosen = 1;
+                }
+                else{
+                    delivery_chosen = 2;
+                }
+
+                count_price();
+            }
+        });
+
+        $("#ok_dialog").dialog({
+            autoOpen: false,
+            modal: true,
+            buttons: {
+                "Новый заказ": function() {
+                    window.location.href = 'index.html';
+                    $(this).dialog("close");
+                },
+            }
+        });
+
+        $("#error_dialog").dialog({
+            autoOpen: false,
+        });
+
+        $(document).tooltip();
+
+        function count_price(){
+            if (chosen_item != -1){
+                var price = 0;
+                if (delivery_chosen == 2){
+                    price = 200;
+                }
+
+                var item_prices = [139, 634, 219, 194, 249, 109, 179, 104];
+
+                price+=item_prices[chosen_item];
+                document.getElementById("price").value = price;
+            }
+        }
+
+        function send(){
+            var name = document.getElementById("name").value;
+            var datetime= document.getElementById("set_time").value;
+
+            if (length(name)==0||length(datetime)==0 || chosen_item==-1){
+                $("#error_dialog").dialog("open");
+                return;
+            }
+
+            $("#ok_dialog").dialog("open");
+        }
+
+        function length(str){
+            var strIter = str[Symbol.iterator]();
+            let str_lenght = 0;
+            for (let ch of strIter){str_lenght++;}
+            return str_lenght;
+        }
+
+        var chosen_item = -1;
+        function chooseListItem(item){
+            if (chosen_item != -1){
+                document.getElementById("list_item_"+chosen_item).style.backgroundColor = 'gold';
+            }
+
+            document.getElementById("list_item_"+item).style.backgroundColor = 'red';
+
+            chosen_item = item;
+
+            count_price();
+
+            $('html, body').animate({
+                scrollTop: $('#fillform').offset().top
+            }, 200);
+        }
+    </script>
+
+</html>
