@@ -32,14 +32,14 @@
                 font-size: 16px;"
                 type="button" value="Отправить" onclick="send_review();"></p>
         </form>
-        <h1 style='background-color:pink'>Отзывы</h1>
+        <h1 style='background-color:pink'>
+            <button style='font-size: 20px;background-color: #4474db;color: white; border: none; padding: 15px 32px; font-size: 16px;' onclick='get_reviews();'>Показать отзывы</button>
+        </h1>
         <section id="all_reviews"></section>
     </body>
 
     <script language="JavaScript" src="../../jquery.js"></script>
     <script language="JavaScript">
-        get_reviews();
-
         function send_review() {
             var name = document.review_form.name.value;
             var email = document.review_form.email.value;
