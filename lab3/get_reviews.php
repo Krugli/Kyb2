@@ -21,12 +21,12 @@
     }
 
     foreach($needed_section->getElementsByTagName("comment") as $item){
-        echo "<div style='background-color:rgb(192, 227, 255);padding-bottom:10px; padding-top:10px'>";
-            echo "<section style='background-color:rgb(19, 207, 235); margin-left:40%; width:20%; padding-bottom:10px; padding-top:10px' align='center'>";
-            echo "<div style='font-size:22px'>".$item->attributes[0]->nodeValue."</div>";
-            echo "<div style='font-size:12px'>".$item->attributes[1]->nodeValue."</div>";
-            echo "<div style='font-size:22px'>".$item->nodeValue."</div>";
-            echo "<section style='background-color:rgb(192, 227, 255); padding-bottom=10px; padding-top=10px' align='center'>";
+        echo "<div class='comment_widget'>";
+            echo "<section>";
+            echo "<div>".$item->attributes[0]->nodeValue."</div>";
+            echo "<div>".$item->attributes[1]->nodeValue."</div>";
+            echo "<div>".$item->nodeValue."</div>";
+            echo "</section>";
         echo "</div>";
     }
 ?>
