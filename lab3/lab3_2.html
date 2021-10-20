@@ -2,12 +2,31 @@
     <title></title>
     <head>
         <meta charset = "UTF-8">
+        <link rel="stylesheet" href="../jquery-ui/jquery-ui.min.css">
+        <script src="../jquery-ui/external/jquery/jquery.js"></script>
+        <script src="../jquery-ui/jquery-ui.js"></script>
+        <script src="../jquery-ui/jquery-ui.min.js"></script>
         <style>
             input[type=text]{
                 background-color: #4474db;color: white; border: none; padding: 15px 32px; font-size: 16px;
             }
             div{
                 font-size: 20px;
+            }
+
+            .comment{
+                background-color:rgb(192, 227, 255);
+                padding-bottom:10px;
+                padding-top:10px;
+                font-size:22px
+            }
+
+            .comment section{
+                background-color:rgb(19, 207, 235);
+                margin-left:40%;
+                width:20%;
+                padding-bottom:10px;
+                padding-top:10px' align='center
             }
         </style>
     </head>
@@ -38,8 +57,17 @@
         <section id="all_reviews"></section>
     </body>
 
-    <script language="JavaScript" src="../../jquery.js"></script>
     <script language="JavaScript">
+
+        $( function() {
+            $.widget( "custom.comment", {
+                // The constructor
+                _create: function() {
+                    this.element.addClass( "comment" );
+                },
+            });
+        });
+
         function send_review() {
             var name = document.review_form.name.value;
             var email = document.review_form.email.value;
@@ -58,14 +86,19 @@
                 }
             });
         }
+
         function get_reviews() {
             $.ajax({
                 type: "GET",
                 url: "get_reviews.php",
                 dataType: "html",
-                success: function(data){document.getElementById("all_reviews").innerHTML = data;}
+                success: function(data){
+                    document.getElementById("all_reviews").innerHTML = data;
+                    $( ".comment_widget" ).comment();
+                }
             });
         }
+
         function length(str){
             var strIter = str[Symbol.iterator]();
             let str_lenght = 0;
