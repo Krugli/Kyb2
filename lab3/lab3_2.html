@@ -52,7 +52,9 @@
                 type="button" value="Отправить" onclick="send_review();"></p>
         </form>
         <h1 style='background-color:pink'>
-            <button style='font-size: 20px;background-color: #4474db;color: white; border: none; padding: 15px 32px; font-size: 16px;' onclick='get_reviews();'>Показать отзывы</button>
+            <button id="comments_button" style='font-size: 20px;background-color: #4474db;color: white; border: none; padding: 15px 32px; font-size: 16px;' onclick='comments_button();'>
+                Показать отзывы
+            </button>
         </h1>
         <section id="all_reviews"></section>
     </body>
@@ -68,6 +70,20 @@
             });
         });
 
+        let show_comments = false;
+        function comments_button(){
+            show_comments = !show_comments;
+            if (show_comments){
+                document.getElementById("comments_button").innerHTML = "Скрыть отзывы";
+                document.getElementById("all_reviews").style = "display:block";
+                get_reviews();
+            }
+            else{
+                document.getElementById("comments_button").innerHTML = "Показать отзывы";
+                document.getElementById("all_reviews").style = "display:none";
+            }
+        }
+
         function send_review() {
             var name = document.review_form.name.value;
             var email = document.review_form.email.value;
@@ -82,7 +98,6 @@
                 dataType: "html",
                 success: function(data){
                     alert("Ваш обзор отправлен");
-                    get_reviews();
                 }
             });
         }
